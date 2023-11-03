@@ -13,8 +13,8 @@
         <td>{{produto.nome}}</td>
         <td>{{produto.preco}}</td>
         <td>
-          <a class="btn-actions" routerLink="/cadastro">Editar </a>|
-          <a class="btn-actions" routerLink="/cadastro">Excluir</a>
+          <a class="btn-actions" [routerLink]="['/produtos/editar', produto.id]">Editar </a>|
+          <a class="btn-actions" [routerLink]="['/produtos/excluir', produto.id]">Excluir</a>
       </td>
     </tr>
   </thead>

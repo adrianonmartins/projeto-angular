@@ -1,36 +1,34 @@
-import { ActivatedRoute, Router } from '@angular/router';
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { ActivatedRoute, Router } from '@angular/router';
 import { IProdutos } from 'src/app/interfaces/produtos';
 import { ProdutosService } from 'src/app/service/produtos.service';
 import Swal from 'sweetalert2';
 
-
 @Component({
-  selector: 'app-cadastrar-produtos',
-  templateUrl: './cadastrar-produtos.component.html',
-  styleUrls: ['./cadastrar-produtos.component.css'],
+  selector: 'app-editar-produto',
+  templateUrl: './editar-produto.component.html',
+  styleUrls: ['./editar-produto.component.css']
 })
-
-export class CadastrarProdutosComponent implements OnInit {
-
+export class EditarProdutoComponent {
   produtoForm: Object|any;
 
-  constructor(private produtosService: ProdutosService, private router: Router) {}
+  constructor(
+    private produtosService: ProdutosService, private router: Router, private route: ActivatedRoute ) {}
 
   ngOnInit(): void {
+
     this.produtoForm = new FormGroup({
       nome: new FormControl('', Validators.required),
       id: new FormControl('', Validators.required),
       preco: new FormControl('', Validators.required),
       codigoBarras: new FormControl('', Validators.required)
     });
+  
+ 
   }
 
-
-
-  enviar() {
-
+  salvar(){
     const nomeControl = this.produtoForm.get('nome');
     const codigoBarrasControl = this.produtoForm.get('codigoBarras');
     const precoControl = this.produtoForm.get('preco');
@@ -44,10 +42,9 @@ export class CadastrarProdutosComponent implements OnInit {
 
       console.log(produto);
 
-
       this.produtosService.cadastrarProdutos(produto).subscribe(
         (result) => {
-          Swal.fire('Confirmado', 'Produto cadastrado com sucesso', 'success');
+          Swal.fire('Confirmado', 'Produto editado com sucesso', 'success');
           this.router.navigate(['/produtos']);
           console.log(result);
         },
@@ -60,6 +57,5 @@ export class CadastrarProdutosComponent implements OnInit {
     } else {
       Swal.fire('ALGO ESTÁ ERRADO', 'error');
     }
-  }
-
+  }    
 }

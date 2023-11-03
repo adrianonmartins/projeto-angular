@@ -17,12 +17,18 @@ httpOptions = {
 
   constructor( private httpClient: HttpClient) { }
 
-   public buscarTodos():Observable<any> {
+  buscarTodos():Observable<any> {
      return this.httpClient.get(`${this.apiUrl}`);
   }
 
   cadastrarProdutos(produto: Partial<IProdutos>){
-       return this.httpClient.post(this.apiUrl, produto)
-       console.log(this.httpClient.post(this.apiUrl, produto));
+    return this.httpClient.post(this.apiUrl, produto);
+  }
+
+  excluirProduto(id: Number){
+    return this.httpClient.delete(`${this.apiUrl}/${id}`);
+  }
+  buscarProduto(id: Number){
+    return this.httpClient.get(`${this.apiUrl}/${id}`);
   }
 }

@@ -9,6 +9,8 @@ import { HeaderComponent } from './components/header/header.component';
 import { CadastrarProdutosComponent } from './pages/cadastrar-produtos/cadastrar-produtos.component';
 import { HomeComponent } from './pages/home/home.component';
 import { ProdutosComponent } from './pages/produtos/produtos.component';
+import { ExcluirProdutoComponent } from './pages/excluir-produto/excluir-produto.component';
+import { EditarProdutoComponent } from './pages/editar-produto/editar-produto.component';
 
 
 @NgModule({
@@ -18,6 +20,8 @@ import { ProdutosComponent } from './pages/produtos/produtos.component';
     HeaderComponent,
     ProdutosComponent,
     CadastrarProdutosComponent,
+    ExcluirProdutoComponent,
+    EditarProdutoComponent,
 
   ],
   imports: [

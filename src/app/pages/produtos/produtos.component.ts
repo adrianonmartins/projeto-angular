@@ -31,9 +31,4 @@ export class ProdutosComponent implements OnInit{
       }
     });
   }
-
-
-  // remover(id: number) {
-  //   this.produtos = this.produtos.filter((produtos) => produtos.id !== id);
-  // }
 }
